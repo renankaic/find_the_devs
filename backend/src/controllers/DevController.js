@@ -44,6 +44,20 @@ module.exports = {
 
         return res.json(dev)
 
+    },
+
+    async show(req, res) {
+
+        const { github_username } = req.params
+
+        const dev = await Dev.findOne({ github_username })
+
+        if (dev) {
+            return res.json(dev)
+        } else {
+            return res.status(404).end()
+        }
+
     }
 
 }

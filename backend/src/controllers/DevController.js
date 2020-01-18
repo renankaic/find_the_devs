@@ -58,6 +58,35 @@ module.exports = {
             return res.status(404).end()
         }
 
+    },
+
+    async update(req, res) {
+
+        const { github_username } = req.params
+
+        const { techs, latitude, longitude } = req.body
+
+        const location = {
+            type: 'Point',
+            coordinates: [longitude, latitude]
+        }
+
+        const techsArray = parseStringAsArray(techs)
+
+        const result = await Dev.updateOne({ github_username }, { techs: techsArray, location })
+
+        return result.n > 0 ? res.status(200).end() : res.status(404).end()
+
+    },
+
+    async destroy(req, res) {
+
+        const { github_username } = req.params
+
+        const result = await Dev.deleteOne({ github_username })
+
+        return result.n > 0 ? res.status(204).end() : res.status(404).end()
+
     }
 
 }

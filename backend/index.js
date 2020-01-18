@@ -1,10 +1,16 @@
 const express = require('express')
+const mongoose = require('mongoose')
 
 const app = express()
 
+mongoose.connect('mongodb+srv://renankaic:re146155@cluster0-y53fl.mongodb.net/test?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+
 app.use(express.json())
 
-// HTTPS methods GET, POST, PUT, DELETE
+// HTTP methods GET, POST, PUT, DELETE
 
 ////Params types:
 //Query Params:
@@ -20,6 +26,10 @@ app.use(express.json())
 // Used to create or update a resource
 // /{resource}
 // { "name": "John", "age": 13}
+
+
+// MongoDB Database (Non-relational)
+
 
 app.get('/', (request, response) => {
 

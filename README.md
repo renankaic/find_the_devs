@@ -26,3 +26,9 @@
     store - save to db
     update - update the db
     destroy - destroy the resource
+
+// React Concepts
+
+    Component -> Isolated block of HTML, CSS and JS that doesn`t affect any other part of the application
+    Property -> Values that are passed from a FATHER component to its child
+    State -> Information stored by the component (immutability)

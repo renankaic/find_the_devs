@@ -59,6 +59,7 @@ function App() {
 
     setGithubUsername('')
     setTechs('')    
+    setDevs([...devs, response.data])
 
   }
 

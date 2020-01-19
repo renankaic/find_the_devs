@@ -3,6 +3,7 @@ import React from 'react';
 import './Global.css';
 import './App.css';
 import './Sidebar.css';
+import './Main.css';
 
 function App() {  
   return (
@@ -37,7 +38,55 @@ function App() {
       </aside>
 
       <main>
+        <ul>
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars2.githubusercontent.com/u/26421325?s=400&u=7fd8f43279c50741ef0d6b2a8a7f151c28b72d4b&v=4" alt="Renan Kaic" className=""/>
+              <div className="user-info">
+                <strong>Renan Kaic Lopes</strong>
+                <span>ReactJS, NodeJS</span>
+              </div>
+            </header>
+            <p>System Analyst at Hyundai AutoEver Brazil. In love with programming</p>
+            <a href="https://github.com/renankaic">Acessar perfil no GitHub</a>
+          </li>
 
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars2.githubusercontent.com/u/26421325?s=400&u=7fd8f43279c50741ef0d6b2a8a7f151c28b72d4b&v=4" alt="Renan Kaic" className="" />
+              <div className="user-info">
+                <strong>Renan Kaic Lopes</strong>
+                <span>ReactJS, NodeJS</span>
+              </div>
+            </header>
+            <p>System Analyst at Hyundai AutoEver Brazil. In love with programming</p>
+            <a href="https://github.com/renankaic">Acessar perfil no GitHub</a>
+          </li>
+
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars2.githubusercontent.com/u/26421325?s=400&u=7fd8f43279c50741ef0d6b2a8a7f151c28b72d4b&v=4" alt="Renan Kaic" className="" />
+              <div className="user-info">
+                <strong>Renan Kaic Lopes</strong>
+                <span>ReactJS, NodeJS</span>
+              </div>
+            </header>
+            <p>System Analyst at Hyundai AutoEver Brazil. In love with programming</p>
+            <a href="https://github.com/renankaic">Acessar perfil no GitHub</a>
+          </li>
+
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars2.githubusercontent.com/u/26421325?s=400&u=7fd8f43279c50741ef0d6b2a8a7f151c28b72d4b&v=4" alt="Renan Kaic" className="" />
+              <div className="user-info">
+                <strong>Renan Kaic Lopes</strong>
+                <span>ReactJS, NodeJS</span>
+              </div>
+            </header>
+            <p>System Analyst at Hyundai AutoEver Brazil. In love with programming</p>
+            <a href="https://github.com/renankaic">Acessar perfil no GitHub</a>
+          </li>
+        </ul>
       </main>
     </div>
   );

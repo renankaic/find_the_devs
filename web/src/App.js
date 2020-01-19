@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import api from './services/Api';
 
 import './Global.css';
 import './App.css';
@@ -7,6 +8,7 @@ import './Main.css';
 
 function App() { 
 
+  const [devs, setDevs] = useState([])
   const [latitude, setLatitude] = useState('')
   const [longitude, setLongitude] = useState('')
   const [github_username, setGithubUsername] = useState('')
@@ -31,11 +33,32 @@ function App() {
     )
   }, [])
 
+  useEffect(() => {
+
+    async function loadDevs() {
+      
+      const response = await api.get('/devs')
+
+      setDevs(response.data)
+    }
+
+    loadDevs()
+
+  }, [])
+
   async function handleAddDev(e) {
 
     e.preventDefault()
 
-    
+    const response = await api.post('/devs', {
+      github_username,
+      techs,
+      latitude,
+      longitude
+    })
+
+    setGithubUsername('')
+    setTechs('')    
 
   }
 
@@ -98,53 +121,19 @@ function App() {
 
       <main>
         <ul>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars2.githubusercontent.com/u/26421325?s=400&u=7fd8f43279c50741ef0d6b2a8a7f151c28b72d4b&v=4" alt="Renan Kaic" className=""/>
-              <div className="user-info">
-                <strong>Renan Kaic Lopes</strong>
-                <span>ReactJS, NodeJS</span>
-              </div>
-            </header>
-            <p>System Analyst at Hyundai AutoEver Brazil. In love with programming</p>
-            <a href="https://github.com/renankaic">Acessar perfil no GitHub</a>
-          </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars2.githubusercontent.com/u/26421325?s=400&u=7fd8f43279c50741ef0d6b2a8a7f151c28b72d4b&v=4" alt="Renan Kaic" className="" />
-              <div className="user-info">
-                <strong>Renan Kaic Lopes</strong>
-                <span>ReactJS, NodeJS</span>
-              </div>
-            </header>
-            <p>System Analyst at Hyundai AutoEver Brazil. In love with programming</p>
-            <a href="https://github.com/renankaic">Acessar perfil no GitHub</a>
-          </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars2.githubusercontent.com/u/26421325?s=400&u=7fd8f43279c50741ef0d6b2a8a7f151c28b72d4b&v=4" alt="Renan Kaic" className="" />
-              <div className="user-info">
-                <strong>Renan Kaic Lopes</strong>
-                <span>ReactJS, NodeJS</span>
-              </div>
-            </header>
-            <p>System Analyst at Hyundai AutoEver Brazil. In love with programming</p>
-            <a href="https://github.com/renankaic">Acessar perfil no GitHub</a>
-          </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars2.githubusercontent.com/u/26421325?s=400&u=7fd8f43279c50741ef0d6b2a8a7f151c28b72d4b&v=4" alt="Renan Kaic" className="" />
-              <div className="user-info">
-                <strong>Renan Kaic Lopes</strong>
-                <span>ReactJS, NodeJS</span>
-              </div>
-            </header>
-            <p>System Analyst at Hyundai AutoEver Brazil. In love with programming</p>
-            <a href="https://github.com/renankaic">Acessar perfil no GitHub</a>
-          </li>
+          {devs.map(dev => (
+            <li key={dev._id} className="dev-item">
+              <header>
+                <img src={dev.avatar_url} alt={dev.name} className="" />
+                <div className="user-info">
+                  <strong>{dev.name}</strong>
+                  <span>{dev.techs.join(', ')}</span>
+                </div>
+              </header>
+              <p>{dev.bio}</p>
+              <a href={`https://github.com/${dev.github_username}`}>Acessar perfil no GitHub</a>
+            </li>  
+          ))}                
         </ul>
       </main>
     </div>
